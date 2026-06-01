@@ -5,7 +5,7 @@ app.use(express.json());
 
 let users = [];
 
-// Create User
+
 app.post("/users", (req, res) => {
   const user = {
     id: Date.now(),
@@ -18,18 +18,17 @@ app.post("/users", (req, res) => {
   res.json(user);
 });
 
-// Get All Users
 app.get("/users", (req, res) => {
   res.json(users);
 });
 
-// Get User By ID
+
 app.get("/users/:id", (req, res) => {
   const user = users.find(u => u.id == req.params.id);
   res.json(user);
 });
 
-// Update User
+
 app.put("/users/:id", (req, res) => {
   const user = users.find(u => u.id == req.params.id);
 
@@ -40,9 +39,7 @@ app.put("/users/:id", (req, res) => {
   }
 
   res.json(user);
-});
 
-// Delete User
 app.delete("/users/:id", (req, res) => {
   users = users.filter(u => u.id != req.params.id);
   res.json({ message: "User deleted" });
